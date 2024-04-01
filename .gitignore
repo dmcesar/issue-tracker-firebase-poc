@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Firebase service account key
+issue-tracker-74724-firebase-adminsdk-pfd3a-eeb34c6ef6.json

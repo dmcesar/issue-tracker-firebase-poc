@@ -23,6 +23,5 @@ export const config = {
   matcher: [
     //"users/:id*"
     "/dashboard/",
-    "/api/auth/signout",
   ],
 };

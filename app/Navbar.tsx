@@ -11,7 +11,7 @@ const Navbar = () => {
     { label: "Issues", href: "/issues" },
   ];
 
-  //const pathname = usePathname();
+  const pathname = usePathname();
 
   // Get session on the client
   // This component could be a server component since it has no user interaction but this is just an example
@@ -21,6 +21,21 @@ const Navbar = () => {
   return (
     <nav className="flex space-x-6 p-5 mb-5 border-b justify-between items-center">
       <Link href="/">Home</Link>
+      <ul className="flex space-x-6">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={classNames({
+              "text-zinc-900": link.href === pathname,
+              "text-zinc-500": link.href !== pathname,
+              "hover:text-zinc-800 transition-colors": true,
+            })}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </ul>
       {status === "loading" && <div>Loading...</div>}
       {status === "unauthenticated" && (
         <Link href="/api/auth/signin">Sign In</Link>
@@ -37,39 +52,4 @@ const Navbar = () => {
   );
 };
 
-{
-  /* <ul className="flex space-x-6">
-  {links.map((link) => (
-    <Link
-      key={link.href}
-      href={link.href}
-      className={classNames({
-        "text-zinc-900": link.href === pathname,
-        "text-zinc-500": link.href !== pathname,
-        "hover:text-zinc-800 transition-colors": true,
-      })}
-    >
-      {link.label}
-    </Link>
-  ))}
-</ul>; */
-}
-
-// {
-//   session?.status === "loading" && <div>Loading...</div>;
-// }
-// {
-//   session?.status === "unauthenticated" && (
-//     <button onClick={() => signIn("credentials")}>Sign In</button>
-//     //<Link href="/sign-in">Sign In</Link>
-//   );
-// }
-// {
-//   session?.status === "authenticated" && (
-//     <>
-//       <div>{session?.data?.user?.email}</div>
-//       <button onClick={() => signOut()}>Sign Out</button>
-//     </>
-//   );
-// }
 export default Navbar;

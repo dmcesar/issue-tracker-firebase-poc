@@ -1,11 +1,12 @@
-import { Button, TextArea, TextField } from "@radix-ui/themes";
-import React from "react";
+"use client";
+import { Button, TextField } from "@radix-ui/themes";
+import MarkdownEditor from "@uiw/react-markdown-editor";
 
 const NewIssuePage = () => {
   return (
     <div className="max-w-xl space-y-3">
       <TextField.Root placeholder="Title" />
-      <TextArea placeholder="Description..." />
+      <MarkdownEditor placeholder="Description..." />
       <Button>Submit New Issue</Button>
     </div>
   );
